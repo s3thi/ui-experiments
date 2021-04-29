@@ -134,7 +134,7 @@ fieldset {
 
 input[type=range] {
     --track-height: .5ex;
-    --track-fill: 0%;
+    --track-fill: 10%;
     --thumb-size: 3ex;
     --thumb-offset: -1.25ex;
     --thumb-highlight-size: 0px;
@@ -147,7 +147,11 @@ input[type=range] {
     outline-offset: 5px;
 }
 
-input[type=range]::-webkit-slider-runnable-track,
+/*
+ * For some reason, this custom slider stuff doesn't work unless I duplicate
+ * everything for Chrome/Edge and Firefox. Sigh.
+*/
+
 input[type=range]::-moz-range-track {
     appearance: none;
     height: var(--track-height);
@@ -155,8 +159,26 @@ input[type=range]::-moz-range-track {
     background: linear-gradient(to right, transparent var(--track-fill), var(--surface1) 0), var(--brand-bg-gradient) fixed;
 }
 
-input[type=range]::-webkit-slider-thumb,
+input[type=range]::-webkit-slider-runnable-track {
+    appearance: none;
+    height: var(--track-height);
+    border-radius: 5ex;
+    background: linear-gradient(to right, transparent var(--track-fill), var(--surface1) 0), var(--brand-bg-gradient) fixed;
+}
+
 input[type=range]::-moz-range-thumb {
+    appearance: none;
+    border: 3px solid var(--surface3);
+    height: var(--thumb-size);
+    width: var(--thumb-size);
+    margin-top: var(--thumb-offset);
+    border-radius: 50%;
+    background: var(--brand-bg-gradient) fixed;
+    box-shadow: 0 0 0 var(--thumb-highlight-size) var(--thumb-highlight-color);
+    transition: box-shadow .1s ease;
+}
+
+input[type=range]::-webkit-slider-thumb {
     appearance: none;
     border: 3px solid var(--surface3);
     height: var(--thumb-size);
