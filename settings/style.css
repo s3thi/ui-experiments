@@ -1,0 +1,221 @@
+:root {
+    --surface1: rgb(27, 27, 27);
+    --surface2: rgb(37, 37, 37);
+    --surface3: rgb(48, 48, 48);
+    --surface4: rgb(59, 59, 59);
+    --text1: rgb(240, 240, 240);
+    --text2: rgb(184, 184, 184);
+    --brand: rgb(118, 161, 184);
+    --brand-bg1: rgb(255, 117, 195);
+    --brand-bg2: rgb(157, 119, 255);
+    --brand-bg-gradient: linear-gradient(
+            to bottom,
+            var(--brand-bg1),
+            var(--brand-bg2)
+    );
+    --thumb-highlight-color: rgba(255, 255, 254, 0.2);
+    --space-xxs: .25rem;
+    --space-xs: .5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2rem;
+    --space-xl: 3rem;
+    --space-xxl: 6rem
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    min-height: 100%;
+    min-width: 100%;
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    background-color: var(--surface1);
+    color: var(--text1);
+}
+
+h1,
+h2 {
+    margin: 0;
+}
+
+main {
+    display: grid;
+    gap: var(--space-lg);
+    padding: var(--space-xl);
+    place-content: center;
+}
+
+form {
+    max-width: 89vw;
+    display: grid;
+    gap: var(--space-xl) var(--space-xxl);
+
+    /* What's this supposed to do? */
+    grid-template-columns: repeat(auto-fit, minmax(min(10ch, 100%), 35ch));
+
+    /* Eh? Why does flex-start work here? */
+    align-items: flex-start;
+}
+
+section {
+    display: grid;
+    gap: var(--space-md);
+}
+
+header {
+    display: grid;
+    gap: var(--space-xxs);
+}
+
+fieldset {
+    border: 1px solid var(--surface4);
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1px;
+    border-radius: var(--space-sm);
+    overflow: hidden;
+}
+
+.fieldset-item > picture {
+    height: var(--space-xl);
+    width: var(--space-xl);
+    clip-path: circle(40%);
+    display: inline-grid;
+    place-content: center;
+    background: var(--surface3) fixed;
+}
+
+.fieldset-item > picture {
+    transition: clip-path .3s ease;
+}
+
+.fieldset-item svg {
+    fill: var(--text2);
+    height: var(--space-md);
+}
+
+.fieldset-item input[type=checkbox] {
+    width: var(--space-sm);
+    height: var(--space-sm);
+    margin: 0;
+    outline-offset: 5px;
+    accent-color: var(--brand);
+    cursor: pointer;
+}
+
+.checkbox-wrapper {
+    width: var(--space-xl);
+    height: var(--space-xl);
+    display: inline-grid;
+    place-content: center;
+    place-self: center;
+
+    clip-path: circle(40%);
+    transition: clip-path .3s ease;
+    background: var(--surface3) fixed;
+}
+
+.fieldset-item:hover .checkbox-wrapper,
+.fieldset-item:focus-within .checkbox-wrapper {
+    clip-path: circle(50%);
+    background: var(--thumb-highlight-color) fixed;
+}
+
+input[type=range] {
+    --track-height: .5ex;
+    --track-fill: 0%;
+    --thumb-size: 3ex;
+    --thumb-offset: -1.25ex;
+    --thumb-highlight-size: 0px;
+
+    display: block;
+    width: 100%;
+    margin: 1ex 0;
+    appearance: none;
+    background: 0 0;
+    outline-offset: 5px;
+}
+
+input[type=range]::-webkit-slider-runnable-track,
+input[type=range]::-moz-range-track {
+    appearance: none;
+    height: var(--track-height);
+    border-radius: 5ex;
+    background: linear-gradient(to right, transparent var(--track-fill), var(--surface1) 0), var(--brand-bg-gradient) fixed;
+}
+
+input[type=range]::-webkit-slider-thumb,
+input[type=range]::-moz-range-thumb {
+    appearance: none;
+    border: 3px solid var(--surface3);
+    height: var(--thumb-size);
+    width: var(--thumb-size);
+    margin-top: var(--thumb-offset);
+    border-radius: 50%;
+    background: var(--brand-bg-gradient) fixed;
+    box-shadow: 0 0 0 var(--thumb-highlight-size) var(--thumb-highlight-color);
+    transition: box-shadow .1s ease;
+}
+
+.fieldset-item:focus-within input[type=range]::-webkit-slider-thumb,
+.fieldset-item:hover input[type=range]::-webkit-slider-thumb,
+.fieldset-item:focus-within input[type=range]::-moz-range-thumb,
+.fieldset-item:hover input[type=range]::-moz-range-thumb {
+    border-color: var(--surface2);
+}
+
+input[type=range]:hover,
+input[type=range]:active {
+    --thumb-highlight-size: 10px;
+}
+
+.fieldset-item {
+    background-color: var(--surface3);
+    display: grid;
+    grid-template-columns: var(--space-lg) 1fr;
+    gap: var(--space-md);
+    padding: var(--space-sm) var(--space-md);
+}
+
+.fieldset-item:focus-within,
+.fieldset-item:hover {
+    background-color: var(--surface2);
+}
+
+.fieldset-item:focus-within svg,
+.fieldset-item:hover svg {
+    fill: white;
+}
+
+.fieldset-item:focus-within picture,
+.fieldset-item:hover picture {
+    clip-path: circle(50%);
+    background: var(--brand-bg-gradient) fixed;
+}
+
+.fieldset-item > .input-stack,
+.fieldset-item > label {
+    display: grid;
+    gap: var(--space-xs)
+}
+
+.fieldset-item > .input-stack > label {
+    /* Makes the containing label disappear */
+    display: contents;
+}
+
+label .label-small {
+    color: var(--text2);
+    line-height: 1.5;
+}
