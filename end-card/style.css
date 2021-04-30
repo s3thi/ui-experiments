@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.6;
+    font-family: Montserrat, Helvetica Neue, Helvetica, Arial, sans-serif;
+    background-color: bisque;
+}
+
+h1 {
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+main {
+    max-width: 48rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 4rem;
+}
+
+.end-card {
+    border: solid 1px black;
+    border-radius: 3px;
+    padding: 1.5rem;
+
+    display: grid;
+    grid-template-rows: 1fr auto;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: center;
+
+    background-color: white;
+    box-shadow: 0.5rem 0.5rem rgb(70, 70, 70);
+}
+
+.end-card h1 {
+    font-size: 2rem;
+}
+
+.end-card img {
+    width: 9rem;
+    border-radius: 15rem;
+
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+
+.end-card p {
+    grid-row-start: 2;
+    grid-column-start: 2;
+}
+
+.end-card a {
+    color: chocolate;
+}
+
+.end-card-btn {
+    grid-template-rows: 1fr auto 1fr;
+}
+
+.end-card-btn a {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    justify-self: end;
+}
+
+a.btn {
+    color: antiquewhite;
+    text-decoration: none;
+    background-color: chocolate;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    border: solid 1px brown;
+    box-shadow: .25rem .25rem bisque;
+}
+
+a.btn:hover,
+a.btn:active {
+    background-color: brown;
+    box-shadow: .25rem .25rem chocolate;
+}
+
+.end-card + .end-card {
+    margin-top: 2rem;
+}
